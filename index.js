@@ -15,8 +15,8 @@ const express = require("express"),
 const commentRoutes = require("./routes/comments"),
   campgroundRoutes = require("./routes/campgrounds"),
   authRoutes = require("./routes/index");
-
-mongoose.connect("mongodb+srv://Johnny:johnny123@cluster0-ky6kj.mongodb.net/test?retryWrites=true&w=majority", {
+//mongodb://localhost/yelp_camp_v9_final
+mongoose.connect("mongodb+srv://Johnny:johnny123@mycluster-ky6kj.mongodb.net/test?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
