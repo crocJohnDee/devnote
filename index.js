@@ -15,13 +15,30 @@ const express = require("express"),
 const commentRoutes = require("./routes/comments"),
   campgroundRoutes = require("./routes/campgrounds"),
   authRoutes = require("./routes/index");
-//mongodb://localhost/yelp_camp_v9_final
-mongoose.connect("mongodb+srv://Johnny:johnny123@mycluster-ky6kj.mongodb.net/test?retryWrites=true&w=majority", {
+
+//*****************************************************
+// LOCAL DATABASE ** IN TESTING**
+//*****************************************************
+mongoose.connect(process.env.DATABASEURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
 }).then(() => console.log("connected to db.."))
   .catch(err => console.log(`ERROR: ${err}`));
+//*****************************************************
+
+//*****************************************************
+// MONGO ATLAS **IN PRODUCTION**
+//*****************************************************
+// mongoose.connect("mongodb+srv://Johnny:johnny123@mycluster-ky6kj.mongodb.net/test?retryWrites=true&w=majority", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false
+// }).then(() => console.log("connected to db.."))
+//   .catch(err => console.log(`ERROR: ${err}`));
+//*****************************************************
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/public`));
