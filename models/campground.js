@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-const Comment = require('./comment');
 
 const campgroundSchema = new mongoose.Schema({
     name: String,
-    price: String,
     image: String,
     description: String,
     author: {
@@ -12,25 +10,7 @@ const campgroundSchema = new mongoose.Schema({
             ref: "User"
         },
         username: String,
-    },
-    comments: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Comment"
-        }
-
-    ]
-});
-campgroundSchema.pre('remove', async function (next) {
-    try {
-        await Comment.remove({
-            "_id": {
-                $in: this.comments
-            }
-        });
-        next();
-    } catch (err) {
-        next(err);
     }
 });
+
 module.exports = mongoose.model("Campground", campgroundSchema);

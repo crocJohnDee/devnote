@@ -40,7 +40,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
 // SHOW route
 router.get("/:id", (req, res) => {
     // find the campground with provided ID
-    Campground.findById(req.params.id).populate("comments").exec(
+    Campground.findById(req.params.id).exec(
         (err, foundCampGround) => {
             err ? console.log() : res.render("campgrounds/show", { campground: foundCampGround });
         }

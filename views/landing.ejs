@@ -2,40 +2,126 @@
 <html>
 
 <head>
-    <title>YelpCamp</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/landing.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"
-        async></script>
+  <title>Devnote</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+  <link rel="stylesheet" href="/stylesheets/landing.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"
+    async></script>
 </head>
 
 <body>
 
-    <div class="container">
-        <% if(error && error.length > 0){ %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
-        <% } %>
-        <% if(success && success.length > 0){ %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-        <% } %>
+  <div class="container">
+
+  </div>
+
+  <div id="landing-header">
+    <h1>Welcome to DevNote!</h1>
+
+    <% if(error && error.length > 0){ %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
     </div>
-
-    <div id="landing-header">
-        <h1>Welcome to YelpCamp!</h1>
-        <a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>
+    <% } %>
+    <% if(success && success.length > 0){ %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
     </div>
+    <% } %>
 
-    <ul class="slideshow">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+    <div class="card" style="width: 50%; min-width:400px; margin: 0 auto">
+      <article class="card-body">
+        <div class="d-flex justify-content-around">
+          <h4 class="card-title text-center mb-0">Sign up</h4>
+          <h4 class="card-title text-center mb-0">Log In</h4>
+        </div>
+        <hr>
+        <div id="signup" style="display: none">
+
+          <p class="text-success text-center">Create a account to store all your snippits in one place</p>
+          <form action="/register" method="POST">
+
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input class="form-control" type="text" name="username" placeholder="username">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input class="form-control" type="text" name="image" placeholder="image">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input class="form-control" type="email" name="email" placeholder="email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input class="form-control" type="password" name="password" placeholder="password">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block"> Sign Up </button>
+            </div>
+
+          </form>
+        </div>
+        <div id="login">
+          <form action="/login" method="POST">
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input class="form-control" type="text" name="username" placeholder="username">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input class="form-control" type="password" name="password" placeholder="password">
+              </div>
+            </div>
+            <p class="text-center"><a href="#" class="btn">Forgot password?</a></p>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block"> Sign Up </button>
+            </div>
+          </form>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <ul class="slideshow">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
 
 
-    <% include ./partials/footer%>
+  <% include ./partials/footer%>

@@ -7,18 +7,22 @@ const User = require("../models/user");
 router.get("/", (req, res) => {
     res.render("landing");
 });
-// Register Form route
-router.get("/register", (req, res) => {
-    res.render("register");
-});
+
 // Handle sign up Logic  route
 router.post("/register", (req, res) => {
     const newUser = new User(
-        { username: req.body.username }
+        {
+            username: req.body.username,
+            email: req.body.email,
+            image: req.body.image
+
+        }
     );
+    console.log(newUser);
+
     User.register(newUser, req.body.password, (err, user) => {
         if (err) {
-            return res.render("register", { "error": err.message });
+            return res.render("landing", { "error": err.message });
         }
         passport.authenticate("local")(req, res, () => {
             req.flash("success", `Welcome to Yelpcamp ${user.username}`);

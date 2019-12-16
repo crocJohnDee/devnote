@@ -6,18 +6,16 @@ const express = require("express"),
   passport = require("passport"),
   LocalStrategy = require("passport-local"),
   Campground = require("./models/campground"),
-  Comment = require("./models/comment"),
   User = require("./models/user"),
-  seedDB = require("./seeds"),
   methodOverride = require("method-override");
 
 
 // requring routes
-const commentRoutes = require("./routes/comments"),
+const
   campgroundRoutes = require("./routes/campgrounds"),
   authRoutes = require("./routes/index");
 
-const url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp_v9_final"
+const url = process.env.DATABASEURL || "mongodb://localhost/devnot2"
 //*****************************************************
 mongoose.connect(url, {
   useNewUrlParser: true,
@@ -55,11 +53,6 @@ app.use((req, res, next) => {
 
 app.use(authRoutes);
 app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
-
-
-
-
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
